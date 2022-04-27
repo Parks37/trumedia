@@ -10,17 +10,19 @@
     "build": "wedgekit build"
   },
   "dependencies": {
+    "@netlify/functions": "^1.0.0",
+    "@types/node": "^14.18.16",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "4.3.1"
   },
   "devDependencies": {
+    "@types/react": "17.0.3",
+    "@types/react-dom": "17.0.3",
     "@wedgekit/scripts": "1.1.0",
     "ava": "3.15.0",
     "ts-node": "9.1.1",
-    "typescript": "4.3.4",
-    "@types/react": "17.0.3",
-    "@types/react-dom": "17.0.3",
+    "typescript": "^4.6.3",
     "vite": "2.4.1"
   },
   "type": "module"
