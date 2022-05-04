@@ -1,0 +1,1 @@
+import{r as e,R as t,a as n}from"./vendor.e9e6b6df.js";const o=()=>(e.exports.useEffect((()=>{fetch("/.netlify/functions/getPlayerData").then((async e=>{console.log(await e.json())}))}),[]),t.createElement("div",null,"Hello World"));n.render(t.createElement(o,null),document.getElementById("root"));
