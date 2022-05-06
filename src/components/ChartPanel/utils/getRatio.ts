@@ -1,14 +1,19 @@
-import { Game, Season, PlayerStat } from "../../../types";
+import { Antecedent, Consequent, Season, PlayerStat } from "../../../types";
 
 export default (
   season: Season,
-  antecedent: keyof PlayerStat,
-  consequent: keyof PlayerStat | "Game"
+  antecedent: Antecedent,
+  consequent: Consequent
 ) =>
-  season.map((game) => ({
-    x: `Week ${game.week}`,
-    y:
-      consequent === "Game"
-        ? game[antecedent]
-        : game[antecedent] / game[consequent],
-  }));
+  season.map((game) => {
+    const isRatio = consequent.id !== "game";
+
+    const y = isRatio
+      ? game[antecedent.id] / game[consequent.id]
+      : game[antecedent.id];
+
+    return {
+      x: game.week,
+      y,
+    };
+  });

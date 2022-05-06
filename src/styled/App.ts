@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   column-gap: 2.5vw;
   display: grid;
-  grid-template-areas: "PlayerSelector LineChart ChartPanel" ". QuickFacts .";
+  grid-template-areas: "PlayerSelector LineChart ChartPanel" ". QuickFacts ChartPanel";
   grid-template-columns: 15vw auto 15vw;
   grid-template-rows: 55vh auto;
   height: 100vh;

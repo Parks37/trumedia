@@ -11,7 +11,7 @@ export default (season: Season) =>
     const fantasyPoints =
       passingYardPts + rushingYardPts + passingTDPts + rushingTDPts + IntPts;
     return {
-      x: `Week ${game.week}`,
+      x: game.week,
       y: fantasyPoints,
     };
   });

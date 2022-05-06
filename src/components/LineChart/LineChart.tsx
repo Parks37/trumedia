@@ -12,25 +12,13 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 import { hexToRGBA } from "@wedgekit/color";
 
-import { Season } from "../../types";
+import { Dataset, Season } from "../../types";
 import { getLabels } from "./utils";
 import { ChartPanel } from "../ChartPanel";
-
-export type DataPoint = {
-  x: string;
-  y: number;
-};
-
-export type Dataset = {
-  label: string;
-  data: DataPoint[];
-  backgroundColor: string;
-  borderColor: string;
-};
 
 ChartJS.register(
   CategoryScale,
@@ -52,6 +40,7 @@ const ChartWrapper = styled.div`
 
 const LineChart = ({ seasons }: { seasons: Season[] }) => {
   const [datasets, setDatasets] = React.useState<Dataset[]>([]);
+  const [title, setTitle] = React.useState("");
 
   const options = {
     responsive: true,
@@ -60,8 +49,8 @@ const LineChart = ({ seasons }: { seasons: Season[] }) => {
         position: "top" as const,
       },
       title: {
-        display: false,
-        text: "Chart.js Line Chart",
+        display: true,
+        text: title,
       },
     },
     maintainAspectRatio: false,
@@ -75,9 +64,14 @@ const LineChart = ({ seasons }: { seasons: Season[] }) => {
   return (
     <>
       <ChartWrapper>
-        <Bar data={data} options={options} />
+        <Line data={data} options={options} />
       </ChartWrapper>
-      <ChartPanel seasons={seasons} setDatasets={setDatasets} />
+      <ChartPanel
+        seasons={seasons}
+        datasets={datasets}
+        setDatasets={setDatasets}
+        setTitle={setTitle}
+      />
     </>
   );
 };

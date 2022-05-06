@@ -1,5 +1,15 @@
 export type PlayerId = number;
 
+export type Antecedent = {
+  label: string;
+  id: keyof PlayerStat;
+};
+
+export type Consequent = {
+  label: string;
+  id: keyof PlayerStat | "game";
+};
+
 export type DataPoint = {
   x: string;
   y: number;
@@ -10,6 +20,9 @@ export type Dataset = {
   data: DataPoint[];
   backgroundColor: string;
   borderColor: string;
+  tension?: number;
+  borderDash?: number[];
+  pointRadius?: number;
 };
 
 export type Game = {

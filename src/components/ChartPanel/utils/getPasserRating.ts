@@ -13,7 +13,7 @@ export default (season: Season) =>
     const interceptionRating = Math.max(2.375 - interceptionPct * 0.25, 0);
 
     return {
-      x: `Week ${game.week}`,
+      x: game.week,
       y:
         ((completionRating +
           yardsRating +

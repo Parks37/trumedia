@@ -26,12 +26,17 @@ const Tab = styled.div`
   }
 `;
 
+type Option = {
+  label: string;
+  id: string;
+};
+
 export default ({
   options,
   value,
   onSelection,
 }: {
-  options: string[];
+  options: Option[];
   value: string;
   onSelection: (string) => void;
 }) => {
@@ -40,10 +45,10 @@ export default ({
       {options.map((option, index) => (
         <Tab
           key={index}
-          selected={value === option}
-          onClick={() => onSelection(option)}
+          selected={value === option.id}
+          onClick={() => onSelection(option.id)}
         >
-          <h4>{option}</h4>
+          <h4>{option.label}</h4>
         </Tab>
       ))}
     </TabRow>
