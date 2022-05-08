@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 
 const TitleWrapper = styled.div`
   text-align: center;
+  white-space: nowrap;
 `;
 
 const Prediction = styled.div<{ borderColor: string }>`

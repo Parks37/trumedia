@@ -119,7 +119,7 @@ export default ({
         )}
         {datasets.map(
           (dataset, i) =>
-            !dataset.label.includes("regression") && (
+            !dataset.label.includes("trendline") && (
               <SeasonSummary key={i} dataset={dataset} />
             )
         )}

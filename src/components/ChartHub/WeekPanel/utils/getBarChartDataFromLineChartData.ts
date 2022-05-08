@@ -2,7 +2,7 @@ import { Dataset } from "../../../../types";
 
 export default (datasets: Dataset[], label: string): Dataset[] => {
   const noRegressionDatases = datasets.filter(
-    (dataset) => !dataset.label.includes("regression")
+    (dataset) => !dataset.label.includes("trendline")
   ) as Dataset[];
   const playerMostRecentWeeks = noRegressionDatases.reduce(
     (acc, dataset, idx) => {

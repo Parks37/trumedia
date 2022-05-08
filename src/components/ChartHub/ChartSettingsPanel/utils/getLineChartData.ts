@@ -22,7 +22,7 @@ export default (season: Season, data: DataPoint[]): Dataset[] => {
       backgroundColor: getTeamColors()[season[0].team].dark,
     },
     {
-      label: `${season[0].fullName} regression`,
+      label: `${season[0].fullName} trendline`,
       data: regressionLine,
       borderColor: getTeamColors()[season[0].team].light,
       backgroundColor: "transparent",

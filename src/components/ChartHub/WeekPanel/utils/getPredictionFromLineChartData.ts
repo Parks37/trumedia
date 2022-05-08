@@ -4,7 +4,7 @@ import { Dataset, PredictorDataSet } from "../../../../types";
 
 export default (datasets: Dataset[]): PredictorDataSet[] =>
   datasets
-    .filter((dataset) => !dataset.label.includes("regression"))
+    .filter((dataset) => !dataset.label.includes("trendline"))
     .map((dataset) => {
       const { data, borderColor, label } = dataset;
       const regressionObject = linearRegression(
