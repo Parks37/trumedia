@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { SelectedOptionMixin } from "../shared";
+import { SelectedOptionMixin } from "../styled";
 
 const TabRow = styled.div`
   align-items: stretch;
@@ -23,6 +23,10 @@ const Tab = styled.div`
   }
   &:first-child {
     border-top-left-radius: 5px;
+  }
+
+  & h4 {
+    margin: 10px;
   }
 `;
 

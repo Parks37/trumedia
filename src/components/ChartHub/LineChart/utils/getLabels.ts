@@ -1,4 +1,4 @@
-import { Game, Seasons } from "../../../types";
+import { Game, Seasons } from "../../../../types";
 
 export default (seasons: Seasons) => {
   const numberOfWeeks = Object.keys(seasons).reduce((acc, playerId) => {
@@ -11,6 +11,6 @@ export default (seasons: Seasons) => {
   const labels = "week "
     .repeat(numberOfWeeks)
     .split(" ")
-    .map((week, idx) => `Week ${idx + 1}`);
+    .map((_, idx) => `Week ${idx + 1}`);
   return labels;
 };

@@ -2,7 +2,8 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { hexToRGBA } from "@wedgekit/color";
+import { Dataset } from "../../../../types";
+import { Cell } from "../../../shared";
 
 const Wrapper = styled.div<{ borderColor: string }>`
   display: grid;
@@ -16,27 +17,8 @@ const Wrapper = styled.div<{ borderColor: string }>`
   border: 5px solid ${(props) => props.borderColor};
   padding: 5px;
   grid-gap: 5px;
+  border-radius: 5px;
 `;
-
-const LabelWrapper = styled.div<{ area: string }>`
-  grid-area: ${(props) => props.area};
-  justify-self: center;
-  white-space: nowrap;
-`;
-
-const Label = styled.h5`
-  margin: 0;
-`;
-
-const Cell = ({ area, label }: { area: string; label: string }) => {
-  return (
-    <LabelWrapper area={area}>
-      <Label>{label}</Label>
-    </LabelWrapper>
-  );
-};
-
-import { Dataset } from "../../../types";
 
 export default ({ dataset }: { dataset: Dataset }) => {
   const rawHighValue = Math.max(

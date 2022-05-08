@@ -4,7 +4,7 @@ import Toast from "@wedgekit/toast";
 
 import { Wrapper, GlobalStyle } from "./styled";
 
-import { LineChart, PlayerSelector, WeekPanel } from "./components";
+import { ChartHub, PlayerSelector } from "./components";
 
 import { Player, Seasons } from "./types";
 
@@ -50,10 +50,7 @@ const App = () => {
             setSelectedPlayers(newSelectedPlayers);
           }}
         />
-        <LineChart
-          seasons={selectedPlayers.map((playerId) => seasons[playerId])}
-        />
-        <WeekPanel
+        <ChartHub
           seasons={selectedPlayers.map((playerId) => seasons[playerId])}
         />
       </Wrapper>

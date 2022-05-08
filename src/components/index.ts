@@ -1,3 +1,2 @@
-export { LineChart } from "./LineChart";
+export { default as ChartHub } from "./ChartHub";
 export { PlayerSelector } from "./PlayerSelector";
-export { WeekPanel } from "./WeekPanel";

@@ -16,9 +16,8 @@ import { Line } from "react-chartjs-2";
 
 import { hexToRGBA } from "@wedgekit/color";
 
-import { Dataset, Season } from "../../types";
+import { Dataset, Season } from "../../../types";
 import { getLabels } from "./utils";
-import { ChartPanel } from "../ChartPanel";
 
 ChartJS.register(
   CategoryScale,
@@ -38,10 +37,15 @@ const ChartWrapper = styled.div`
   grid-area: LineChart;
 `;
 
-const LineChart = ({ seasons }: { seasons: Season[] }) => {
-  const [datasets, setDatasets] = React.useState<Dataset[]>([]);
-  const [title, setTitle] = React.useState("");
-
+const LineChart = ({
+  datasets,
+  seasons,
+  title,
+}: {
+  datasets: Dataset[];
+  seasons: Season[];
+  title: string;
+}) => {
   const options = {
     responsive: true,
     plugins: {
@@ -66,12 +70,6 @@ const LineChart = ({ seasons }: { seasons: Season[] }) => {
       <ChartWrapper>
         <Line data={data} options={options} />
       </ChartWrapper>
-      <ChartPanel
-        seasons={seasons}
-        datasets={datasets}
-        setDatasets={setDatasets}
-        setTitle={setTitle}
-      />
     </>
   );
 };

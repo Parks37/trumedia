@@ -11,18 +11,27 @@ export type Consequent = {
 };
 
 export type DataPoint = {
+  x: number;
+  y: number;
+};
+
+export type LabeledDataPoint = {
   x: string;
   y: number;
 };
 
 export type Dataset = {
   label: string;
-  data: DataPoint[];
+  data: LabeledDataPoint[];
   backgroundColor: string;
   borderColor: string;
   tension?: number;
   borderDash?: number[];
   pointRadius?: number;
+};
+
+export type PredictorDataSet = Pick<Dataset, "label" | "borderColor"> & {
+  data: number;
 };
 
 export type Game = {

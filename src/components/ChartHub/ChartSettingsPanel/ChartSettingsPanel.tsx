@@ -4,16 +4,16 @@ import styled from "styled-components";
 
 import { hexToRGBA } from "@wedgekit/color";
 
-import { TabSelector } from "../shared";
-import { RatioSelects } from "./RatioSelects";
-import { Antecedent, Consequent, Dataset, Season } from "../../types";
+import { Antecedent, Consequent, Dataset, Season } from "../../../types";
 import {
+  TabSelector,
   getFantasyPoints,
   getPasserRating,
   getRatio,
-  getStyledData,
-} from "./utils";
+} from "../../shared";
+import { RatioSelects } from "./RatioSelects";
 import SeasonSummary from "./SeasonSummary";
+import { getLineChartData } from "./utils";
 
 const Wrapper = styled.div`
   background: ${hexToRGBA("#5f5f7d", 0.25)};
@@ -62,17 +62,17 @@ export default ({
   setDatasets: (datasets: Dataset[]) => void;
   setTitle: (title: string) => void;
 }) => {
-  const [selectedTab, setSelectedTab] = React.useState("getRatio");
+  const [selectedTab, setSelectedTab] = React.useState("getFantasyPoints");
   const [[antecedent, consequent], setTerms] = React.useState<
     [Antecedent, Consequent]
   >([
     {
-      label: "Completions",
-      id: "Cmp",
+      label: "Passing Yards",
+      id: "PsYds",
     },
     {
-      label: "Attempts",
-      id: "Att",
+      label: "Game",
+      id: "game",
     },
   ]);
 
@@ -89,7 +89,7 @@ export default ({
     setNewTitle(tab);
     setDatasets(
       seasons.reduce((acc, season) => {
-        const data = getStyledData(
+        const data = getLineChartData(
           season,
           utilMap[tab](season, antecedent, consequent)
         );

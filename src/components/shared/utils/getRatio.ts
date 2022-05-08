@@ -1,4 +1,4 @@
-import { Antecedent, Consequent, Season, PlayerStat } from "../../../types";
+import { Antecedent, Consequent, Season } from "../../../types";
 
 export default (
   season: Season,

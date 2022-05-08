@@ -1,3 +1,8 @@
 export { SelectedOptionMixin } from "./styled";
-export { default as TabSelector } from "./TabSelector";
-export { getTeamColors } from "./utils";
+export { Cell, TabSelector } from "./components";
+export {
+  getTeamColors,
+  getFantasyPoints,
+  getPasserRating,
+  getRatio,
+} from "./utils";

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
 import { Select } from "@wedgekit/select";
 
-import { Antecedent, Consequent, PlayerStat } from "../../../types";
+import { Antecedent, Consequent } from "../../../../types";
 
 const statOptions = [
   {
