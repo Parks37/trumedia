@@ -18,7 +18,6 @@ export const Wrapper = styled.div`
     grid-template-areas:"Header Header" "PlayerSelector ChartPanel" "LineChart LineChart" "QuickFacts QuickFacts"  ;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 30vh 50vh 1fr;
-    padding-bottom: 50vh;
 `;
 
 export const HeaderWrapper = styled.div`
