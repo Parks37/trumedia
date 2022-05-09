@@ -24,13 +24,13 @@ export default ({ dataset }: { dataset: Dataset }) => {
   const rawHighValue = Math.max(
     ...dataset.data.map((dataPoint) => dataPoint.y)
   );
-  const lowWeek = dataset.data.findIndex(
+  const lowWeek = dataset.data.find(
     (dataPoint) => dataPoint.y === rawHighValue
-  );
+  ).x;
   const rawLowValue = Math.min(...dataset.data.map((dataPoint) => dataPoint.y));
-  const highWeek = dataset.data.findIndex(
+  const highWeek = dataset.data.find(
     (dataPoint) => dataPoint.y === rawLowValue
-  );
+  ).x;
 
   return (
     <Wrapper borderColor={dataset.borderColor}>
@@ -47,8 +47,8 @@ export default ({ dataset }: { dataset: Dataset }) => {
         ).toFixed(2)}
       />
       <Cell area="High" label={rawHighValue.toFixed(2)} />
-      <Cell area="LowWeek" label={`Week ${lowWeek.toString()}`} />
-      <Cell area="HighWeek" label={`Week ${highWeek.toString()}`} />
+      <Cell area="LowWeek" label={lowWeek} />
+      <Cell area="HighWeek" label={highWeek} />
     </Wrapper>
   );
 };
