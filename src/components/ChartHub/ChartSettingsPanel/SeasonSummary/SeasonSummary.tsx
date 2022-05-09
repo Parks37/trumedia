@@ -24,11 +24,11 @@ export default ({ dataset }: { dataset: Dataset }) => {
   const rawHighValue = Math.max(
     ...dataset.data.map((dataPoint) => dataPoint.y)
   );
-  const lowWeek = dataset.data.find(
+  const highWeek = dataset.data.find(
     (dataPoint) => dataPoint.y === rawHighValue
   ).x;
   const rawLowValue = Math.min(...dataset.data.map((dataPoint) => dataPoint.y));
-  const highWeek = dataset.data.find(
+  const lowWeek = dataset.data.find(
     (dataPoint) => dataPoint.y === rawLowValue
   ).x;
 
