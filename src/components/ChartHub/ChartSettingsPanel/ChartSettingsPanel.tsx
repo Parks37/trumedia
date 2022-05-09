@@ -18,8 +18,9 @@ import { getLineChartData } from "./utils";
 const Wrapper = styled.div`
   background: ${hexToRGBA("#5f5f7d", 0.25)};
   border-radius: 5px;
-  grvalue-area: ChartPanel;
-  height: min-content;
+  grid-area: ChartPanel;
+  height: 100%;
+  overflow: auto;
 `;
 
 const TabWrapper = styled.div`
