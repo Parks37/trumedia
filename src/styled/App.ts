@@ -5,13 +5,29 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   column-gap: 2.5vw;
   display: grid;
-  grid-template-areas: "PlayerSelector LineChart ChartPanel" ". QuickFacts ChartPanel";
+  grid-template-areas:"Header Header Header" "PlayerSelector LineChart ChartPanel" ". QuickFacts ChartPanel";
   grid-template-columns: 15vw auto 15vw;
-  grid-template-rows: 55vh auto;
+  grid-template-rows: min-content 50vh auto;
   height: 100vh;
   padding: 2.5vh 2.5vw;
   row-gap: 5vh;
   width: 100vw;
+  overflow: auto;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-areas:"Header Header" "LineChart LineChart" "QuickFacts QuickFacts"  "PlayerSelector ChartPanel";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 50vh 1fr 1fr;
+`;
+
+export const HeaderWrapper = styled.div`
+  grid-area: Header;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  & h2 {
+    margin: 0;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`

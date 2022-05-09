@@ -7,6 +7,7 @@ import { Wrapper, GlobalStyle } from "./styled";
 import { ChartHub, PlayerSelector } from "./components";
 
 import { Player, Seasons } from "./types";
+import { HeaderWrapper } from "./styled/App";
 
 const App = () => {
   const [seasons, setSeasons] = useState<Seasons>({});
@@ -41,8 +42,10 @@ const App = () => {
   return (
     <div>
       <GlobalStyle />
-
       <Wrapper>
+        <HeaderWrapper>
+          <h2> 2018 QB performance mapping </h2>
+        </HeaderWrapper>
         <PlayerSelector
           players={players}
           selectedIds={selectedPlayers}

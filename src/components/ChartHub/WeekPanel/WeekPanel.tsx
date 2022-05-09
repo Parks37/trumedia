@@ -19,8 +19,6 @@ const WeekPanel = styled.div`
   background: ${hexToRGBA("#5f5f7d", 0.25)};
   border-radius: 5px;
   grid-area: QuickFacts;
-  overflow: hidden;
-  height: 35vh;
   display: flex;
   flex-direction: column;
 `;
@@ -30,8 +28,18 @@ const ChartRow = styled.div`
   flex-direction: row;
   gap: 20px;
   padding: 20px;
-  align-items: center;
   flex: 1;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
+
+const AreaWrapper = styled.div`
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
 `;
 
 const tabOptions = [
@@ -62,92 +70,111 @@ export default ({
         value={selectedTab}
         onSelection={setSelectedTab}
       />
-
       <ChartRow>
-        {selectedTab === "getWeekSummary" ? (
+        {seasons.length > 0 ? (
           <>
-            <BarChart
-              datasets={getBarChartFromSeasons(
-                "Passing Yards per Attempt",
-                seasons,
-                (season: Season) =>
-                  getRatio(
-                    season,
-                    {
-                      label: "Passing Yards",
-                      id: "PsYds",
-                    },
-                    {
-                      label: "Attempts",
-                      id: "Att",
-                    }
-                  )
+            <AreaWrapper area="Chart1">
+              {selectedTab === "getWeekSummary" ? (
+                <BarChart
+                  datasets={getBarChartFromSeasons(
+                    "Passing Yards per Attempt",
+                    seasons,
+                    (season: Season) =>
+                      getRatio(
+                        season,
+                        {
+                          label: "Passing Yards",
+                          id: "PsYds",
+                        },
+                        {
+                          label: "Attempts",
+                          id: "Att",
+                        }
+                      )
+                  )}
+                  labels={["Passing Yards per Attempt"]}
+                />
+              ) : (
+                <PredictionColumn
+                  datasets={getPredictionFromSeasons(
+                    seasons,
+                    (season: Season) =>
+                      getRatio(
+                        season,
+                        {
+                          label: "Passing Yards",
+                          id: "PsYds",
+                        },
+                        {
+                          label: "Attempts",
+                          id: "Att",
+                        }
+                      )
+                  )}
+                  title="Passing Yards per Attempt"
+                />
               )}
-              labels={["Passing Yards per Attempt"]}
-            />
-            <BarChart
-              datasets={getBarChartFromSeasons(
-                "Completion Percentage",
-                seasons,
-                (season: Season) =>
-                  getRatio(
-                    season,
-                    {
-                      label: "Completions",
-                      id: "Cmp",
-                    },
-                    {
-                      label: "Attempts",
-                      id: "Att",
-                    }
-                  )
+            </AreaWrapper>
+            <AreaWrapper area="Chart2">
+              {selectedTab === "getWeekSummary" ? (
+                <BarChart
+                  datasets={getBarChartFromSeasons(
+                    "Completion Percentage",
+                    seasons,
+                    (season: Season) =>
+                      getRatio(
+                        season,
+                        {
+                          label: "Completions",
+                          id: "Cmp",
+                        },
+                        {
+                          label: "Attempts",
+                          id: "Att",
+                        }
+                      )
+                  )}
+                  labels={["Completion Percentage"]}
+                />
+              ) : (
+                <PredictionColumn
+                  datasets={getPredictionFromSeasons(
+                    seasons,
+                    (season: Season) =>
+                      getRatio(
+                        season,
+                        {
+                          label: "Completions",
+                          id: "Cmp",
+                        },
+                        {
+                          label: "Attempts",
+                          id: "Att",
+                        }
+                      )
+                  )}
+                  title="Completion Percentage"
+                />
               )}
-              labels={["Completion Percentage"]}
-            />
-            <BarChart
-              datasets={getBarChartDataFromLineChartData(datasets, title)}
-              labels={[title]}
-            />
+            </AreaWrapper>
+            <AreaWrapper area="Chart3">
+              {selectedTab === "getWeekSummary" ? (
+                <BarChart
+                  datasets={getBarChartDataFromLineChartData(datasets, title)}
+                  labels={[title]}
+                />
+              ) : (
+                <PredictionColumn
+                  datasets={getPredictionFromLineChartData(datasets)}
+                  title={title}
+                />
+              )}
+            </AreaWrapper>
           </>
         ) : (
-          <>
-            <PredictionColumn
-              datasets={getPredictionFromSeasons(seasons, (season: Season) =>
-                getRatio(
-                  season,
-                  {
-                    label: "Passing Yards",
-                    id: "PsYds",
-                  },
-                  {
-                    label: "Attempts",
-                    id: "Att",
-                  }
-                )
-              )}
-              title="Passing Yards per Attempt"
-            />
-            <PredictionColumn
-              datasets={getPredictionFromSeasons(seasons, (season: Season) =>
-                getRatio(
-                  season,
-                  {
-                    label: "Completions",
-                    id: "Cmp",
-                  },
-                  {
-                    label: "Attempts",
-                    id: "Att",
-                  }
-                )
-              )}
-              title="Completion Percentage"
-            />
-            <PredictionColumn
-              datasets={getPredictionFromLineChartData(datasets)}
-              title={title}
-            />
-          </>
+          <div>
+            Select a player to see their performance on the most recent week.
+          </div>
         )}
       </ChartRow>
     </WeekPanel>

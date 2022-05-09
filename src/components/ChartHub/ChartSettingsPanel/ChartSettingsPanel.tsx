@@ -110,18 +110,26 @@ export default ({
         options={tabOptions}
       />
       <TabWrapper>
-        {selectedTab === "getRatio" && (
-          <RatioSelects
-            antecedent={antecedent}
-            consequent={consequent}
-            setTerms={setTerms}
-          />
-        )}
-        {datasets.map(
-          (dataset, i) =>
-            !dataset.label.includes("trendline") && (
-              <SeasonSummary key={i} dataset={dataset} />
-            )
+        {seasons.length > 0 ? (
+          <>
+            {selectedTab === "getRatio" && (
+              <RatioSelects
+                antecedent={antecedent}
+                consequent={consequent}
+                setTerms={setTerms}
+              />
+            )}
+            {datasets.map(
+              (dataset, i) =>
+                !dataset.label.includes("trendline") && (
+                  <SeasonSummary key={i} dataset={dataset} />
+                )
+            )}
+          </>
+        ) : (
+          <div>
+            Select a player to see a summary of their performance this season.
+          </div>
         )}
       </TabWrapper>
     </Wrapper>

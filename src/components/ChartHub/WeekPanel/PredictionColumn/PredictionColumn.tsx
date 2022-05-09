@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   flex: 1;
-  align-self: start;
+  justify-self: start;
 `;
 
 const TitleWrapper = styled.div`

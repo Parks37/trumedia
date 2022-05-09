@@ -27,7 +27,6 @@ ChartJS.register(
 const ChartWrapper = styled.div`
   background: ${hexToRGBA("#e7e7f7", 1)};
   border-radius: 5px;
-  flex: 1;
 `;
 
 const options = {

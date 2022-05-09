@@ -68,7 +68,13 @@ const LineChart = ({
   return (
     <>
       <ChartWrapper>
-        <Line data={data} options={options} />
+        {seasons.length > 0 ? (
+          <Line data={data} options={options} />
+        ) : (
+          <div style={{ color: "black" }}>
+            Select a player to see their performance over the season.
+          </div>
+        )}
       </ChartWrapper>
     </>
   );
